@@ -9,14 +9,15 @@ def runQuery():
     """
     Runs a GET request to the Ergast API to retrieve information about the round selected.
     """
-    URL = f"http://ergast.com/api/f1/{seasonSelected.get()}/{roundSelected.get()}/results/1.json"
-    req = requests.get(url=URL)
-    print(req)
-    data = req.json()
-    print(data)
-    firstname = data['MRData']['RaceTable']['Races'][0]['Results'][0]['Driver']['givenName']
-    lastname = data['MRData']['RaceTable']['Races'][0]['Results'][0]['Driver']['familyName']
-    winnerLabel.configure(text=f"Winner: {firstname} {lastname}")
+    try:
+    	URL = f"http://ergast.com/api/f1/{seasonSelected.get()}/{roundSelected.get()}/results/1.json"
+    	req = requests.get(url=URL)
+    	data = req.json()
+    	firstname = data['MRData']['RaceTable']['Races'][0]['Results'][0]['Driver']['givenName']
+    	lastname = data['MRData']['RaceTable']['Races'][0]['Results'][0]['Driver']['familyName']
+    	winnerLabel.configure(text=f"Winner: {firstname} {lastname}")
+    except:
+    	winnerLabel.configure(text="Round invalid for this season.")
 
 # --- Define main window ---
 
