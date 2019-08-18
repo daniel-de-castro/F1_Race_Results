@@ -1,6 +1,13 @@
+"""
+A command line program which lets you see the final results for any F1 race (since the 1st season in 1950).
+"""
+
 import requests
 
 def mainPrompt():
+    """
+    The main menu, where the user can type a number corresponding to their choice.
+    """
     query = input("\nWhat do you want to do?\n1 - See race results\n2 - Exit program\ntype number >>  ")
     if query == "1":
         getRaceResults()
@@ -9,10 +16,15 @@ def mainPrompt():
         mainPrompt()
 
 def getRaceResults():
+    """
+    The section where the user can input the season and the round, and then the results are printed.
+    """
+
     print("\nInput F1 season and number of round to get results")
     season = input("Season: ")
     round = input("Round: ")
 
+    # Attempts to retrieve the data from the Ergast API
     try:
         URL = f"http://ergast.com/api/f1/{season}/{round}/results.json"
         req = requests.get(url=URL)
@@ -39,12 +51,14 @@ def getRaceResults():
             else:
                 print(f"{i+1}. {firstname} {lastname}")
 
-        mainPrompt()
+        mainPrompt()  # Go back to the main menu
 
+    # Handles exception for when the query is invalid
     except:
         print("\nInvalid season or round")
         getRaceResults()
 
+# Run program
 print("\nWelcome to the F1 command line app!")
 mainPrompt()
 print("\nThank for using the F1 command line app!")
