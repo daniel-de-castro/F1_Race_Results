@@ -62,10 +62,3 @@ winnerLabel = tk.Label(frame, text="Winner:")
 winnerLabel.grid(row=3, column=0)
 
 root.mainloop()
-
-
-
-
-
-
-
