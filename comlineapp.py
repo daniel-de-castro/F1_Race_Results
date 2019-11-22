@@ -59,6 +59,6 @@ def getRaceResults():
         getRaceResults()
 
 # Run program
-print("\nWelcome to the F1 command line app!")
+print("\nWelcome to the F1 race results app!")
 mainPrompt()
-print("\nThank for using the F1 command line app!")
+print("\nThank you for using the F1 race results app!")
